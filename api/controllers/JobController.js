@@ -13,7 +13,7 @@ module.exports = {
    */
   create: async function (req, res) {
     try {
-      let { title, description, salary, position } = req.allParams();
+      let { title, description, salary, position, companyId } = req.allParams();
 
       if (!title) {
         return res.badRequest({err: 'title is required'})
@@ -29,7 +29,7 @@ module.exports = {
       }).fetch();
       // console.log("::::::: jobDetail ", jobDetail)
       // create a new record in Job
-      const job = await Job.create({title, jobDetail: jobDetail.id}).fetch()
+      const job = await Job.create({title, jobDetail: jobDetail.id, company: companyId}).fetch()
       return res.ok(job)
     } catch (err) {
       return res.serverError(err)
@@ -41,9 +41,21 @@ module.exports = {
    * `JobController.find()`
    */
   find: async function (req, res) {
-    return res.json({
-      todo: 'find() is not implemented yet!'
-    });
+    try {
+      console.log("headers ", req.headers)
+      
+      const title = req.headers.title
+      const jobs = await Job.find({
+       where : { title: {
+        'contains': title
+       }}
+     })
+      .populate('company')
+      .populate('jobDetail')
+      return res.ok(jobs)
+    } catch (err) {
+      return res.serverError(err)
+    }
   }
 
 };

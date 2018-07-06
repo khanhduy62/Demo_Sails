@@ -35,6 +35,10 @@ module.exports.routes = {
   'POST /defs/:name': 'def.create',
 
   'POST /jobs': 'JobController.create',
+  'GET /jobs': 'JobController.find',
+
+  'POST /applications': 'ApplicationController.create',
+  'GET /applications': 'ApplicationController.find',
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
   //  ╚╩╝╚═╝╚═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝

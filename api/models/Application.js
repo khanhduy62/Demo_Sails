@@ -1,5 +1,5 @@
 /**
- * Job.js
+ * Application.js
  *
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -12,8 +12,17 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+    job: {
+      model: 'Job',
+      columnName: 'jobId',
+      required: true
+    },
 
-    title: { type: 'string', required: true },
+    candidate: {
+      model: 'Candidate',
+      columnName: 'candidateId',
+      required: true
+    }
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
@@ -23,23 +32,7 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    jobDetail: {
-      model: 'JobDetail',
-      columnName: 'jobDetailId',
-      required: true
-    },
 
-    company: {
-      model: 'Company',
-      columnName: 'companyId',
-      required: true
-    },
-
-    candidates: {
-      collection: 'Candidate',
-      via: 'job',
-      through: 'Application'
-    }
   },
 
 };

@@ -19,4 +19,13 @@ module.exports.policies = {
 
   // '*': true,
 
+  JobController: {
+    '*': 'isLoggedIn'
+  },
+  CompanyController: {
+    '*': 'isLoggedIn'
+  },
+  UserController: {
+    '*': true
+  }
 };

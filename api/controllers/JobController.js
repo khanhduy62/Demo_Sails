@@ -4,7 +4,6 @@
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
-
 module.exports = {
   
 
@@ -41,6 +40,7 @@ module.exports = {
    * `JobController.find()`
    */
   find: async function (req, res) {
+    console.log("req user id: ", req.user)
     try {
       console.log("headers ", req.headers)
       

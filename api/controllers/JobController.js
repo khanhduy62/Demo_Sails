@@ -48,10 +48,13 @@ module.exports = {
       const jobs = await Job.find({
        where : { title: {
         'contains': title
-       }}
+       }},
+       limit: 1,
+       skip: 0 
      })
       .populate('company')
       .populate('jobDetail')
+      .populate('candidates')
       return res.ok(jobs)
     } catch (err) {
       return res.serverError(err)

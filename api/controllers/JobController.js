@@ -42,8 +42,6 @@ module.exports = {
   find: async function (req, res) {
     console.log("req user id: ", req.user)
     try {
-      console.log("headers ", req.headers)
-      
       const title = req.headers.title
       const jobs = await Job.find({
        where : { title: {
